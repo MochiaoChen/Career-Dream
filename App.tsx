@@ -1,4 +1,3 @@
-
 import React, { useState, useCallback } from 'react';
 import { generateCareerImage, editImage } from './services/geminiService';
 import { Header } from './components/Header';
@@ -84,15 +83,17 @@ const App: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen bg-slate-100 flex flex-col">
+    <div className="min-h-screen bg-gray-50 flex flex-col">
       <Header />
-      <main className="flex-grow container mx-auto p-4 md:p-8 flex items-center justify-center">
-        <div className="w-full max-w-5xl bg-white rounded-3xl shadow-lg p-6 md:p-10 transition-all duration-500">
+      <main className="flex-grow container mx-auto p-4 sm:p-6 lg:p-8 flex items-center justify-center">
+        <div className="w-full max-w-5xl bg-white rounded-2xl shadow-xl border border-gray-200/80 p-6 md:p-10 transition-all duration-500">
           {!generatedImage && !isLoading && (
-            <div className="grid md:grid-cols-2 gap-8 items-center">
+            <div className="grid md:grid-cols-2 gap-8 md:gap-12 items-center">
               <div className="flex flex-col space-y-6">
-                <h2 className="text-2xl md:text-3xl font-medium text-slate-800">Create Your Career Snapshot</h2>
-                <p className="text-slate-600">Upload a clear photo of yourself and tell us your dream job. Our AI will imagine you in action!</p>
+                <div className="space-y-2">
+                    <h2 className="text-3xl md:text-4xl font-medium text-gray-900 tracking-tight">Your Future, Imagined</h2>
+                    <p className="text-gray-600">Upload a clear photo and your dream job. Let our AI bring your career to life.</p>
+                </div>
                 <ImageUploader onImageUpload={handleImageUpload} />
                 <TextInput
                   id="profession"
@@ -108,8 +109,8 @@ const App: React.FC = () => {
                   Generate My Career Photo
                 </ActionButton>
               </div>
-              <div className="hidden md:flex items-center justify-center bg-slate-100 rounded-2xl h-full p-8">
-                  <svg xmlns="http://www.w3.org/2000/svg" className="h-40 w-40 text-indigo-300" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1">
+              <div className="hidden md:flex items-center justify-center bg-gray-100 rounded-xl h-full p-8 aspect-square">
+                  <svg xmlns="http://www.w3.org/2000/svg" className="h-40 w-40 text-blue-300" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1">
                     <path strokeLinecap="round" strokeLinejoin="round" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
                   </svg>
               </div>
@@ -119,14 +120,14 @@ const App: React.FC = () => {
           {isLoading && (
             <div className="flex flex-col items-center justify-center h-96">
               <Spinner />
-              <p className="mt-4 text-slate-600 animate-pulse">
-                Dreaming up your new career... this might take a moment.
+              <p className="mt-4 text-gray-600 animate-pulse">
+                Imagining your new career... this might take a moment.
               </p>
             </div>
           )}
           
           {error && (
-             <div className="text-center p-8 bg-red-50 rounded-2xl">
+             <div className="text-center p-8 bg-red-50 rounded-xl">
               <h3 className="text-xl font-medium text-red-700">Oops! Something went wrong.</h3>
               <p className="mt-2 text-red-600">{error}</p>
               <ActionButton onClick={handleStartOver} className="mt-6 bg-red-500 hover:bg-red-600">
@@ -147,7 +148,7 @@ const App: React.FC = () => {
           )}
         </div>
       </main>
-       <footer className="text-center p-4 text-sm text-slate-500">
+       <footer className="text-center p-4 text-sm text-gray-500">
         Powered by Gemini.
       </footer>
     </div>

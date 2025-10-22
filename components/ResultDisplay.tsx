@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { TextInput } from './TextInput';
 import { ActionButton } from './ActionButton';
@@ -23,20 +22,20 @@ export const ResultDisplay: React.FC<ResultDisplayProps> = ({
 }) => {
   return (
     <div className="flex flex-col gap-8 animate-fade-in">
-      <div>
-        <h2 className="text-3xl font-medium text-slate-800 text-center">Your Career Snapshot!</h2>
-        <p className="text-slate-600 text-center mt-2">Now you can edit the image with simple text prompts.</p>
+      <div className="text-center">
+        <h2 className="text-3xl md:text-4xl font-medium text-gray-900 tracking-tight">Your Career Snapshot!</h2>
+        <p className="text-gray-600 mt-2">Fine-tune your new reality. Describe any changes you'd like to see.</p>
       </div>
 
-      <div className="grid md:grid-cols-2 gap-8 items-start">
-        <div className="flex flex-col space-y-6">
+      <div className="grid md:grid-cols-2 gap-8 md:gap-12 items-start">
+        <div className="w-full aspect-square bg-black/5 rounded-xl flex items-center justify-center overflow-hidden">
             <img
                 src={imageSrc}
                 alt="Generated career"
-                className="w-full h-auto object-contain rounded-2xl shadow-lg"
+                className="w-full h-full object-contain"
             />
         </div>
-        <div className="flex flex-col space-y-4">
+        <div className="flex flex-col space-y-4 pt-4">
              <TextInput
                 id="edit-prompt"
                 label="Describe your edit..."
@@ -50,7 +49,7 @@ export const ResultDisplay: React.FC<ResultDisplayProps> = ({
               </ActionButton>
               <button
                 onClick={onStartOver}
-                className="w-full text-center text-sm text-slate-500 hover:text-indigo-600 hover:underline py-2 rounded-full focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                className="w-full text-center text-sm font-medium text-blue-600 hover:text-blue-800 py-2 rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 disabled:text-gray-400"
                 disabled={isEditing}
               >
                 Start Over
